@@ -61,7 +61,7 @@ function clearCart() {
 }
 
 // Função para buscar os produtos e exibir na lista
-axios.get('https://apis-ppqi.onrender.com/api/produtos')
+axios.get('https://pimhtml.onrender.com/api/produtos')
     .then(response => {
         const produtos = response.data;
         const productList = document.getElementById('product-list'); // Supondo que a UL já está no HTML
@@ -90,7 +90,7 @@ function terminarCompra() {
     }
 
     // Enviar os itens do carrinho para o backend
-    axios.post('https://apis-ppqi.onrender.com/api/comprar', {
+    axios.post('https://pimhtml.onrender.com/api/comprar', {
         cartItems: cartItems.map(item => ({
             ID_produto: item.produtoID,
             quantidade: item.quantidade

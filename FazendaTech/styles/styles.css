@@ -12,16 +12,8 @@ html, body {
 
 body {
     background-image: url(img/agricultura.jpg);
-    margin: 0;
-    padding: 0;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: center;
     background-attachment: fixed;
     height: 100vh;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
@@ -323,19 +315,21 @@ body::-webkit-scrollbar {
     max-width: calc(20% - 20px); /* Limita a largura máxima para 20% menos o gap */
     box-sizing: border-box; /* Garante que padding e borda sejam incluídos na largura total */
     text-align: center;
-    border: 1px solid #ccc;
+    border: none; /* Remove a borda ao redor dos produtos */
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    box-shadow: none; /* Remove a sombra ao redor dos produtos */
+    color: #fff; /* Define o texto como branco */
     transition: transform 0.3s ease;
 }
 
 .produto img {
-    width: 200px;
-    height: 120px;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
-    margin-bottom: px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc; /* Adiciona uma borda ao redor da imagem */
+    border-radius: 8px; /* Bordas arredondadas na imagem, se desejado */
 }
 
 .produto h3 {

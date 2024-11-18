@@ -72,7 +72,7 @@ function login() {
     const senha = document.getElementById('senha').value;
 
     if (usuario && senha) {
-        fetch('https://apis-ppqi.onrender.com/api/login', {
+        fetch('https://pimhtml.onrender.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ function cadastro() {
     const endereco = document.getElementById('enderecoCadastro').value;
 
     if (nome_cliente && cpf && usuario && senha && endereco) {
-        fetch('https://apis-ppqi.onrender.com/api/cadastro', {
+        fetch('https://pimhtml.onrender.com/api/cadastro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
