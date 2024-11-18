@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/popup.css">
+    <link rel="shortcut icon" type="imagex/png" href="https://img.icons8.com/?size=100&id=hW36R0GaSRSU&format=png&color=000000">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Fazenda Tech - Produtos</title>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="icone">
+                <a href="homepage.html">
+
+                    <img id="nav_logo" src="styles/img/tech.png" alt="logo" />
+      
+                  </a>
+
+            </div>
+            <ul id="nav_list">
+                <li class="nav-item">
+                    <a href="homepage.html">Início</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="produtos.html">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="sobre.html">Sobre</a>
+                </li>
+            </ul>
+
+            <div class="login">
+                <a class="btn-login" id="abrirLogin">
+                    Login
+                </a>
+            </div>
+
+            <div> 
+                <a id="abrirCarrinho">
+                <i class="fas fa-shopping-cart"></i> Carrinho (<span id="cart-count">0</span>)
+            </a></div>
+
+           
+
+            </div>
+
+        </nav>
+    </header>
+
+    <div id="product-list" class="produtos-container"></div>
+
+        
+
+
+    <div id="overlay" class="overlay"></div>
+
+    
+
+<div id="carrinho" class="carrinho-modal">
+    <div class="carrinho-header">
+        <button class="fecharCarrinho">&times;</button>
+    </div>
+    <div class="carrinho-content">
+        <div id="carrinho-itens"></div>
+        <div id="total">Total: R$ 0.00</div>
+        <button class="limparCarrinho">Limpar Carrinho</button>
+        <button class="terminarCompra">Terminar Compra</button>
+    </div>
+</div>
+
+<div id="mensagem" class="mensagem-compra"></div>
+
+
+<div id="overlay" class="overlay"></div>
+<div id="popupLogin" class="popup">
+    <span class="fecharPopup">&times;</span>
+    <div id="formSelector">
+        <button id="btnLogin" class="botaoPopup btnLogar">Login</button>
+        <button id="btnCadastro" class="botaoPopup botaoSecundario">Cadastrar</button>
+    </div>
+
+    <div id="formContainer" class="hidden">
+        <form id="formLoginCadastro">
+            <button type="button" class="btnVoltar" id="btnVoltarLogin"> <i class="fas fa-arrow-left"></i></button>
+            <div id="loginForm" class="hidden login1">
+                <h2 class="h2login">Faça o Login!</h2>
+                <input type="text" id="usuario" class="inputPopup" placeholder="Email" />
+                <input type="password" id="senha" class="inputPopup" placeholder="Senha" />
+                <button type="submit" class="botaoPopup">Login</button>
+            </div>
+
+            <div id="cadastroForm" class="hidden cadastro">
+                <h2 class="h2cadastro">Faça o Cadastro!</h2>
+                <input type="text" id="nomeCliente" class="inputPopup" placeholder="Nome completo" />
+                <input type="text" id="cpf" class="inputPopup" placeholder="CPF" />
+                <input type="text" id="usuarioCadastro" class="inputPopup" placeholder="Email" />
+                <input type="password" id="senhaCadastro" class="inputPopup" placeholder="Senha" />
+                <input type="text" id="enderecoCadastro" class="inputPopup" placeholder="Endereço" />
+                <button type="submit" class="botaoPopup">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+  <footer>
+    <div class="rodape">
+      <p>Fazenda Tech&copy; 2024 - Todos os direitos reservados</p>
+      <br />
+      <nav>
+        <ul>
+          <li>Clique para fazer contato</li> ->
+          <li><a class="contato" href="contato.html">Enviar E-mail</a></li>
+        </ul>
+        <p class="email">Fazendatech2024@gmail.com</p>
+      </nav>
+    </div>
+  </footer>
+
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/carrinho.js"></script>
+</body>
+
+</html>

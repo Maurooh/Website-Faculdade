@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --main-color: #00eeff;
+    --text-color: #ffffff;
+    --bg-color-01: #1f242d;
+    --bg-color-02: #323946;
+    --color-00: #0000001a;
+
+    /* Extras */
+    --color-01: #999999;
+    --color-02: #009539;
+    --color-03: #7950f2;
+    --color-04: #c00000;
+    --color-05: #232323;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+
+}
+
+html {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+body{
+    background-color: var(--bg-color-01);
+    color: var(--text-color);
+}
+
+
+h1 {
+    font-size: 42px;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.pedido{
+
+    margin-top: 18%;
+    text-align: center;
+
+}
+
+.nav-item.active {
+    color: #ffffff;
+    border-bottom: 2px solid #bbb207;
+    padding: -10px;
+}
+
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 20px;
+    display: flex;
+    margin-left: 46%;
+    padding: 10px;
+   
+}
+
+.div-voltar {
+    background-color: #bbb207;
+    width: 30%;
+    height: 20%;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+
+.div-voltar:hover {
+    background-color: #746101;
+    cursor: pointer;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Coloca os itens com espaço entre eles */
+    align-items: flex-start; /* Alinha os itens no início verticalmente */
+}

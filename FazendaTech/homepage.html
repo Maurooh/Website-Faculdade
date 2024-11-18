@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" type="imagex/png" href="https://img.icons8.com/?size=100&id=hW36R0GaSRSU&format=png&color=000000">
+    <link rel="stylesheet" href="styles/popup.css">
+    <title>Fazenda Tech - Inicio</title>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="icone">
+                <img id="nav_logo" src="styles/img/tech.png" alt="logo">
+            </div>
+            <ul id="nav_list">
+                <li class="nav-item active">
+                    <a href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="produtos.html">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="sobre.html">Sobre</a>
+                </li>
+            </ul>
+
+            <div class="login">
+                <a class="btn-login" id="abrirLogin">
+                    Login
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="principal">
+        <h1 class="titulo">Bem-vindo à Fazenda Tech</h1>
+        <p class="descricao">Tecnologia & Natureza.</p>
+        <a href="produtos.html" class="btn-centro">Ir para Produtos</a>
+    </section>
+
+
+
+
+
+
+    <div id="overlay" class="overlay"></div>
+<div id="popupLogin" class="popup">
+    <span class="fecharPopup">&times;</span>
+    <div id="formSelector">
+        <button id="btnLogin" class="botaoPopup btnLogar">Login</button>
+        <button id="btnCadastro" class="botaoPopup botaoSecundario">Cadastrar</button>
+    </div>
+
+    <div id="formContainer" class="hidden">
+        <form id="formLoginCadastro">
+            <button type="button" class="btnVoltar" id="btnVoltarLogin"> <i class="fas fa-arrow-left"></i></button>
+            <div id="loginForm" class="hidden login1">
+                <h2 class="h2login">Faça o Login!</h2>
+                <input type="text" id="usuario" class="inputPopup" placeholder="Email" />
+                <input type="password" id="senha" class="inputPopup" placeholder="Senha" />
+                <button type="submit" class="botaoPopup">Login</button>
+            </div>
+
+            <div id="cadastroForm" class="hidden cadastro">
+                <h2 class="h2cadastro">Faça o Cadastro!</h2>
+                <input type="text" id="nomeCliente" class="inputPopup" placeholder="Nome completo" />
+                <input type="text" id="cpf" class="inputPopup" placeholder="CPF" />
+                <input type="text" id="usuarioCadastro" class="inputPopup" placeholder="Email" />
+                <input type="password" id="senhaCadastro" class="inputPopup" placeholder="Senha" />
+                <input type="text" id="enderecoCadastro" class="inputPopup" placeholder="Endereço" />
+                <button type="submit" class="botaoPopup">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/login.js"></script>
+</body>

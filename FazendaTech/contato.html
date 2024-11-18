@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="styles/contato.css">
+    <script src="scripts/contato.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+          <div class="icone">
+            <a href="homepage.html">
+
+              <img id="nav_logo" src="styles/img/tech.png" alt="logo" />
+
+            </a>
+          </div>
+          <ul id="nav_list">
+            <li class="nav-item">
+              <a href="homepage.html">Início</a>
+            </li>
+            <li class="nav-item">
+              <a href="produtos.html">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a href="sobre.html">Sobre</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+
+
+     
+      <section class="contact" id="contact">
+        <h2>Entre em <span style="color: #e6d353;">Contato!</span></h2>
+    
+        <form id="contactForm">
+            <input type="hidden" name="accessKey" value="e7d9e8de-2abb-4fe4-8bc4-457e8d61963f">
+            <div class="input-box">
+                <input type="text" placeholder="Nome Completo" name="name" required>
+                <input type="email" placeholder="E-mail" name="email" required>
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Telefone" name="phone" required>
+                <input type="text" placeholder="Assunto" name="subject" required>
+            </div>
+            <textarea name="message" cols="30" rows="8" placeholder="Mensagem" required></textarea>
+            <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+    </section>
+    
+    <div id="confirmationMessage" class="confirmation-message enviado" style="display: none; color: green; margin-bottom: 20px; font-size: 1.2em; margin-left: 42%;">
+        E-mail enviado com sucesso!
+    </div>
+</body>
+</html>
