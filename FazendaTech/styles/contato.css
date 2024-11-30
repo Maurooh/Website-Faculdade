@@ -163,3 +163,21 @@ header {
     background-color: rgb(81, 53, 2);
     color: white;
 }
+
+.nome-usuario {
+    font-size: 18px; /* Tamanho da fonte ajustado */
+    color: #ffffff; /* Cor do texto branca */
+    margin-left: 10px; /* Espaço entre o nome e o elemento anterior */
+    background-color: #4CAF50; /* Cor de fundo para destacar */
+    padding: 5px 10px; /* Espaçamento interno */
+    border-radius: 20px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor */
+    display: inline-block; /* Exibição em linha com blocos */
+    text-transform: capitalize; /* Primeira letra maiúscula */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+.nome-usuario:hover {
+    transform: scale(1.1); /* Aumenta um pouco o tamanho ao passar o mouse */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Aumenta a sombra no hover */
+}
