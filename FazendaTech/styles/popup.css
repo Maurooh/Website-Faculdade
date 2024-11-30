@@ -1,136 +1,126 @@
-/* Estilo principal do popup */
+/* Centralização do conteúdo do popup */
 .popup {
     display: none; /* Inicialmente oculto */
     position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-    backdrop-filter: blur(10px); /* Adiciona desfoque no fundo */
+    backdrop-filter: blur(10px); /* Desfoque no fundo */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     z-index: 1000;
+    top: 0;
+    left: 0;
 }
 
-.login1{
-    margin-left: 8%;/* Ajuste a cor de fundo */
-
-}
-
-.cadastro{
-    margin-left: 8%;
-}
-
-#formSelector .botaoSecundario{
-    margin-left: 20%;
-    background-color: orange; 
-    
-}
-#formSelector .btnLogar{
-    margin-left: 20%;
-    background-color: rgb(44, 212, 44); 
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%; /* Faz os campos ocuparem a largura total */
-    max-width: 300px; /* Largura máxima dos campos */
-    padding: 10px; /* Espaçamento interno */
-    margin: 10px 0; /* Espaçamento entre os campos */
-    border: 1px solid #ccc; /* Borda do campo */
-    border-radius: 5px; /* Bordas arredondadas */
-}
-/* Estilo do contêiner principal */
-/* Estilo do contêiner de formulário */
+/* Formulário de login/cadastro */
 #formSelector {
     background-color: #fff; /* Fundo branco */
-    padding: 30px; /* Aumente o padding conforme necessário */
+    padding: 30px; /* Adiciona padding */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
-    justify-items: center; /* Centraliza os itens horizontalmente */
-    width: 250px; /* Ajuste a largura conforme necessário */
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 20px; /* Espaço entre os botões */
+    width: 320px; /* Largura ajustável */
     margin: 0 auto; /* Centraliza na horizontal */
     position: relative;
 }
 
-#formSelector {
-    /* ...restante do código... */
-    gap: 20px; /* Espaço entre os botões */
-}
-
-/* Estilo do contêiner de formulário */
+/* Formulário de login e cadastro */
 #formContainer {
-    background-color: #fff; /* Fundo branco para a parte de preenchimento */
-    padding: 20px; /* Adicione algum padding */
-    border-radius: 10px; /* Bordas arredondadas */
+    background-color: #fff; /* Fundo branco */
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* Empilha os formulários verticalmente */
-    align-items: center; /* Centraliza os formulários */
-    width: 400px; /* Largura fixa para o formulário */
-    margin-top: 20px; /* Espaço acima do formulário */
+    flex-direction: column; /* Empilha os formulários */
+    align-items: center; /* Centraliza */
+    width: 100%; /* Adapta à largura */
+    max-width: 400px; /* Largura máxima */
+    margin-top: 20px;
+    /* Usando a classe 'hidden' para controlar a visibilidade */
 }
 
-#formContainer.hidden{
-    display: none;
+#formContainer.hidden {
+    display: none; /* Esconde o formulário quando necessário */
 }
 
-/* Ajustes para os campos de entrada */
+/* Estilo dos campos de input */
 .inputPopup {
-    width: calc(100% - 40px); /* Largura ajustada com padding */
-    max-width: 320px; /* Largura máxima para as caixas de entrada */
-    padding: 12px; /* Aumentar o padding */
-    margin-bottom: 20px; /* Espaçamento entre os campos */
-    border-radius: 8px; /* Bordas arredondadas */
-    border: 1px solid #ddd; /* Borda padrão */
-    font-size: 16px; /* Tamanho da fonte */
-    transition: border-color 0.3s; /* Transição suave para o foco */
-    background-color: #f9f9f9; /* Fundo claro para os campos de entrada */
+    margin-left: 30px;
+    width: 100%; /* Largura total do contêiner */
+    max-width: 300px; /* Largura máxima para os campos */
+    padding: 12px; /* Maior padding para campos */
+    margin-bottom: 15px; /* Margem entre os campos */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
 }
 
 .inputPopup:focus {
     border-color: #bb7900; /* Cor ao focar */
-    outline: none; /* Remove o contorno padrão do navegador */
+    outline: none;
 }
 
+.btnLogar{
+    background-color: rgb(28, 206, 28);
+}
 
-
-
+.botaoSecundario {
+    background-color: orange;
+}
+/* Botões principais */
 .botaoPopup {
-    width: 150px; /* Defina um tamanho fixo ou diminua conforme necessário */
-    padding: 10px; /* Ajuste o padding para não ficar muito largo */
+    width: 300px; /* Tamanho fixo do botão */
+    padding: 20px;
     margin-top: 10px;
-    margin-left: 25%;
+    margin-left: 2%; /* Alinhamento à esquerda */
     font-size: 18px;
     text-align: center;
     margin-bottom: 10px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: rgb(44, 212, 44); 
+}
+
+.botaoPopup2 {
+    width: 150px; /* Tamanho fixo do botão */
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 33%; /* Alinhamento à esquerda */
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(44, 212, 44);
 }
 
 .botaoPopup:hover {
-    background-color: #d98a00; /* Cor mais escura ao passar o mouse */
+    background-color: #a0927a; /* Cor mais escura ao passar o mouse */
 }
 
-/* Estilo dos botões de Voltar */
+/* Botão de Voltar */
 .btnVoltar {
-    width: 50px; /* Largura ajustada com padding */
-    max-width: 150px; /* Largura máxima para os botões de voltar */
-    padding: 10px; /* Aumentar o padding */
-    font-size: 16px; /* Tamanho da fonte */
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 20px; /* Espaçamento entre os botões */
-    background-color: #ff6600; /* Cor de fundo dos botões de voltar */
-    border: none; /* Remove a borda padrão */
-    border-radius: 8px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão ao passar o mouse */
-    transition: background-color 0.3s; /* Transição suave para hover */
+    width: 50px;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #ff6600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btnVoltar:hover {
-    background-color: #ad1414; /* Cor mais escura ao passar o mouse */
+    background-color: #ad1414;
 }
 
 /* Botão de fechar */
@@ -158,37 +148,19 @@ input[type="password"] {
     border-color: #f44336;
 }
 
+/* Esconde elementos */
 .hidden {
     display: none;
 }
 
-.mensagem-compra {
+/* Estilo do Overlay */
+#overlay {
     position: fixed;
-    margin-left: 45%;
-    top: 63%;
-    background-color: white; /* Verde para sucesso */
-    padding: 15px;
-    border-radius: 8px;
-    z-index: 1000;
-    display: none;
-    transition: opacity 0.5s ease-in-out;   
-}
-
-.mensagem-compra.error {
-    background-color: #f44336; 
-}
-
-.mensagem-compra.success {
-    background-color: #4CAF50; /* Verde para sucesso */
-    color: white; /* Letras brancas */
-}
-
-.mensagem-compra.show {
-    display: block;
-    opacity: 1;
-}
-
-.mensagem-compra.hidden {
-    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Garante que o overlay apareça acima do conteúdo */
     display: none;
 }

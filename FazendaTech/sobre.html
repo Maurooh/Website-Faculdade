@@ -40,8 +40,36 @@
 
         <div class="login">
           <a class="btn-login" id="abrirLogin"> Login </a>
+          <button id="logoutButton" style="display: none;">Logout</button> <!-- Botão de Logout -->
         </div>
       </nav>
+<script>
+            // Recuperar e exibir o nome do usuário ao carregar a página
+            const nomeUsuario = localStorage.getItem('nomeUsuario');
+            if (nomeUsuario) {
+                const loginButton = document.getElementById('abrirLogin');
+                loginButton.textContent = nomeUsuario; // Atualiza o texto do botão
+                loginButton.classList.add('usuario-logado'); // Adiciona uma classe para estilo
+                loginButton.removeAttribute('id'); // Remove o ID se não precisar mais
+            
+                // Opcional: Esconder o botão de login e exibir o nome do usuário
+                loginButton.style.display = 'none';
+                
+                // Criar um elemento para mostrar o nome do usuário
+                const nomeUsuarioSpan = document.createElement('span');
+                nomeUsuarioSpan.textContent = nomeUsuario; // Nome do usuário
+                nomeUsuarioSpan.classList.add('nome-usuario'); // Adiciona uma classe para estilo
+                loginButton.parentNode.insertBefore(nomeUsuarioSpan, loginButton.nextSibling); // Insere após o botão
+            }
+            
+            // Função de logout (caso queira adicionar)
+            function logout() {
+                localStorage.removeItem('nomeUsuario'); // Remove o nome do usuário
+                window.location.reload(); // Recarrega a página
+            }
+            </script>
+
+
     </header>
 
     <section class="info">
@@ -205,7 +233,7 @@
                 <h2 class="h2login">Faça o Login!</h2>
                 <input type="text" id="usuario" class="inputPopup" placeholder="Email" />
                 <input type="password" id="senha" class="inputPopup" placeholder="Senha" />
-                <button type="submit" class="botaoPopup">Login</button>
+                <button type="submit" class="botaoPopup botaoPopup2">Login</button>
             </div>
 
             <div id="cadastroForm" class="hidden cadastro">
@@ -215,7 +243,7 @@
                 <input type="text" id="usuarioCadastro" class="inputPopup" placeholder="Email" />
                 <input type="password" id="senhaCadastro" class="inputPopup" placeholder="Senha" />
                 <input type="text" id="enderecoCadastro" class="inputPopup" placeholder="Endereço" />
-                <button type="submit" class="botaoPopup">Cadastrar</button>
+                <button type="submit" class="botaoPopup botaoPopup2">Cadastrar</button>
             </div>
         </form>
     </div>
