@@ -12,6 +12,7 @@ html, body {
 
 body {
     background-image: url(img/agricultura.jpg);
+      /* Centraliza a imagem */
 }
 
 header {
@@ -269,7 +270,6 @@ body::-webkit-scrollbar {
     /* Centraliza horizontalmente */
     align-items: center;
     /* Centraliza verticalmente */
-    height: 110vh;
     /* Ocupa toda a altura da viewport */
     background-color: rgba(2, 1, 0, 0.29);
     box-shadow: 5px 5px 15px rgba(252, 169, 2, 0.422);

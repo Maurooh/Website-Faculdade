@@ -50,41 +50,53 @@ app.post('/api/comprar', async (req, res) => {
   const { cartItems } = req.body;
 
   if (!cartItems || cartItems.length === 0) {
-    return res.status(400).json({ error: 'Carrinho vazio.' });
+      return res.status(400).json({ error: 'Carrinho vazio.' });
   }
 
   const transaction = new sql.Transaction();
 
   try {
-    await connectToDatabase();
-    
-    await transaction.begin();
-    const request = new sql.Request(transaction);
+      await connectToDatabase();
+      await transaction.begin();
+      const request = new sql.Request(transaction);
 
-    for (const item of cartItems) {
-      const { ID_produto, quantidade } = item;
+      for (const item of cartItems) {
+          const { ID_produto, quantidade } = item;
 
-      const result = await request.query(`SELECT qtd_disponivel FROM Produto WHERE ID_produto = ${ID_produto}`);
-      const quantidadeAtual = result.recordset[0].qtd_disponivel; // Corrigido aqui
+          // Parametrize consultas para evitar SQL Injection
+          request.input('ID_produto', sql.Int, ID_produto);
+          request.input('quantidade', sql.Int, quantidade);
 
-      if (quantidade > quantidadeAtual) {
-        await transaction.rollback();
-        return res.status(400).json({ error: `Quantidade insuficiente para o produto ID ${ID_produto}.` });
+          const result = await request.query(`
+              SELECT qtd_disponivel 
+              FROM Produto 
+              WHERE ID_produto = @ID_produto
+          `);
+
+          const quantidadeAtual = result.recordset[0]?.qtd_disponivel;
+
+          if (quantidade > quantidadeAtual) {
+              await transaction.rollback();
+              return res.status(400).json({ error: `Quantidade insuficiente para o produto ID ${ID_produto}.` });
+          }
+
+          await request.query(`
+              UPDATE Produto 
+              SET qtd_disponivel = qtd_disponivel - @quantidade 
+              WHERE ID_produto = @ID_produto
+          `);
       }
 
-      await request.query`UPDATE Produto SET qtd_disponivel = qtd_disponivel - ${item.quantidade} WHERE ID_produto = ${ID_produto}`;
-    }
-
-    await transaction.commit();
-    res.status(200).json({ message: 'Compra realizada e estoque atualizado com sucesso.' });
+      await transaction.commit();
+      res.status(200).json({ message: 'Compra realizada e estoque atualizado com sucesso.' });
   } catch (err) {
-    console.error('Erro ao processar a compra:', err);
-    try {
-      await transaction.rollback();
-    } catch (rollbackErr) {
-      console.error('Erro ao reverter transação:', rollbackErr);
-    }
-    res.status(500).send('Erro ao processar a compra.');
+      console.error('Erro ao processar a compra:', err);
+      try {
+          await transaction.rollback();
+      } catch (rollbackErr) {
+          console.error('Erro ao reverter transação:', rollbackErr);
+      }
+      res.status(500).send('Erro ao processar a compra.');
   }
 });
 
