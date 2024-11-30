@@ -12,8 +12,7 @@ function addToCart(produtoID, produto, preco) {
         cartItems.push({ produtoID, produto, preco, quantidade: 1, totalPreco: preco });
     }
 
-    // Recalcular o total com base no conteúdo atual do carrinho
-    total = cartItems.reduce((acc, item) => acc + item.totalPreco, 0);
+    total += preco;
     updateCart();
 }
 
@@ -22,6 +21,7 @@ function exibirMensagem(texto, sucesso = true) {
     mensagemDiv.innerText = texto;
     mensagemDiv.style.color = sucesso ? 'green' : 'red';
     mensagemDiv.style.display = 'block'; // Mostrar a mensagem
+    
 
     setTimeout(() => {
         mensagemDiv.style.display = 'none';
@@ -39,6 +39,7 @@ function updateCart() {
     }
 
     carrinhoItens.innerHTML = '';
+
     cartItems.forEach(item => {
         carrinhoItens.innerHTML += `
             <div class="carrinho-item">
