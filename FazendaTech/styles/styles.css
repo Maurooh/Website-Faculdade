@@ -176,7 +176,7 @@ body::-webkit-scrollbar {
     display: flex;
     gap: 20%;
     align-items: center;
-    height: 60vh;
+    height: 45vh;
 }
 
 .linha4 {
@@ -269,7 +269,7 @@ body::-webkit-scrollbar {
     /* Centraliza horizontalmente */
     align-items: center;
     /* Centraliza verticalmente */
-    height: 90vh;
+    height: 110vh;
     /* Ocupa toda a altura da viewport */
     background-color: rgba(2, 1, 0, 0.29);
     box-shadow: 5px 5px 15px rgba(252, 169, 2, 0.422);

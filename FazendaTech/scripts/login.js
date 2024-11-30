@@ -175,30 +175,37 @@ function login() {
 
 // Cadastro
 function cadastro() {
-    const nome = document.getElementById('nomeCadastro').value;
+    const nome_cliente = document.getElementById('nomeCadastro').value;
+    const cpf = document.getElementById('cpfCadastro').value;
     const email = document.getElementById('emailCadastro').value;
     const senha = document.getElementById('senhaCadastro').value;
+    const endereco = document.getElementById('enderecoCadastro').value;
     
-    if (nome && email && senha) {
+    if (nome_cliente && cpf && email && senha && endereco) {
         fetch('https://pimhtml.onrender.com/api/cadastro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                nome: nome,
+                nome_cliente: nome_cliente,
+                cpf: cpf,
                 email: email,
-                senha: senha
+                senha: senha,
+                endereco: endereco
             })
         })
         .then(response => response.json())
         .then(data => {
             if (data.message) {
                 alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
             }
         })
         .catch(error => {
             console.error('Erro:', error);
+            alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
         });
     } else {
         alert('Por favor, preencha todos os campos!');
