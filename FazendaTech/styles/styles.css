@@ -234,6 +234,7 @@ body::-webkit-scrollbar {
     /* Cor do border suavizada */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     /* Sombra suave */
+    margin-top: 80px;
     position: absolute;
 }
 
@@ -271,6 +272,7 @@ body::-webkit-scrollbar {
     align-items: center;
     /* Centraliza verticalmente */
     /* Ocupa toda a altura da viewport */
+    height: 125vh;
     background-color: rgba(2, 1, 0, 0.29);
     box-shadow: 5px 5px 15px rgba(252, 169, 2, 0.422);
     overflow: hidden;
@@ -656,7 +658,7 @@ body::-webkit-scrollbar {
 	color: #fff;
 	padding: 20px;
 	text-align: center;
-	margin-top: 60px;
+	margin-top: 10%;
     border-top: 2px solid;
     border-image: linear-gradient(45deg, #fad85c, #332500) 1;
 }
