@@ -14,19 +14,30 @@ function addToCart(produtoID, produto, preco) {
 
     total += preco;
     updateCart();
+
+    // Exibir mensagem de sucesso
+    exibirMensagem(`${produto} adicionado ao carrinho!`);
 }
 
 function exibirMensagem(texto, sucesso = true) {
     const mensagemDiv = document.getElementById('mensagem');
     mensagemDiv.innerText = texto;
-    mensagemDiv.style.color = sucesso ? 'green' : 'red';
-    mensagemDiv.style.display = 'block'; // Mostrar a mensagem
-    
+    mensagemDiv.style.color = 'white'; // Texto branco
+    mensagemDiv.style.display = 'block';
+    mensagemDiv.style.position = 'fixed'; // Posição fixa
+    mensagemDiv.style.top = '95px'; // 10px abaixo do topo
+    mensagemDiv.style.left = '10px'; // 10px da esquerda
+    mensagemDiv.style.backgroundColor = sucesso ? 'green' : 'red'; // Fundo verde para sucesso, vermelho para erro
+    mensagemDiv.style.padding = '10px'; // Espaçamento interno
+    mensagemDiv.style.borderRadius = '5px'; // Bordas arredondadas
+    mensagemDiv.style.zIndex = '1000'; // Sobrepor todos os elementos
 
     setTimeout(() => {
         mensagemDiv.style.display = 'none';
     }, 5000);
 }
+
+
 
 // Função para atualizar o carrinho
 function updateCart() {

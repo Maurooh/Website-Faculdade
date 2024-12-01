@@ -95,13 +95,6 @@ function atualizarNomeUsuario() {
 
 // Chama a função de atualização ao carregar a página
 document.addEventListener('DOMContentLoaded', atualizarNomeUsuario);
-document.getElementById('logoutButton').addEventListener('click', function () {
-    // Remover o nome do usuário do localStorage
-    localStorage.removeItem('nomeUsuario');
-
-    // Atualizar a interface para mostrar o botão de login novamente
-    updateHeader();
-});
 
 // Função para atualizar o cabeçalho (exibe o botão de login ou logout dependendo do estado)
 function updateHeader() {
@@ -111,21 +104,42 @@ function updateHeader() {
     const usuarioInfo = document.getElementById('usuarioInfo');
 
     if (nomeUsuario) {
-        loginButton.textContent = nomeUsuario; // Exibe o nome do usuário
-        loginButton.style.display = 'none'; // Esconde o botão de login
-        logoutButton.style.display = 'inline'; // Exibe o botão de logout
+        // Exibe o nome do usuário
         usuarioInfo.textContent = `Bem-vindo, ${nomeUsuario}`;
         usuarioInfo.style.display = 'inline';
+
+        // Exibe o link de logout
+        logoutButton.style.display = 'inline';
+
+        // Esconde o botão de login
+        loginButton.style.display = 'none';
     } else {
-        loginButton.style.display = 'inline'; // Exibe o botão de login
-        logoutButton.style.display = 'none'; // Esconde o botão de logout
-        usuarioInfo.style.display = 'none'; // Esconde o nome do usuário
+        // Exibe o botão de login
+        loginButton.style.display = 'inline';
+        
+        // Esconde o link de logout
+        logoutButton.style.display = 'none';
+
+        // Esconde o nome do usuário
+        usuarioInfo.style.display = 'none';
     }
 }
 
-// Chama a função para atualizar o cabeçalho ao carregar a página
 window.onload = updateHeader;
 
+
+// Chama a função para atualizar o cabeçalho ao carregar a página
+
+
+document.getElementById('logoutButton').addEventListener('click', function (e) {
+    e.preventDefault(); // Impede a navegação ao clicar no link
+
+    // Limpa todo o localStorage
+    localStorage.clear();
+
+    // Atualiza a interface para mostrar o botão de login novamente
+    updateHeader();
+});
 // Login
 function login() {
     const usuario = document.getElementById('usuario').value;
@@ -151,7 +165,7 @@ function login() {
                 const loginButton = document.getElementById('abrirLogin');
                 loginButton.textContent = data.nome; // Muda o texto do botão
                 loginButton.classList.add('usuario-logado'); // Adiciona uma classe opcional
-                loginButton.removeAttribute('id'); // Remove o ID se não precisar
+                loginButton.removeAttribute('id'); // Remove o ID se não precisar mais
 
                 // Esconde o botão de login
                 loginButton.style.display = 'none';
@@ -172,16 +186,16 @@ function login() {
         alert('Por favor, preencha todos os campos!');
     }
 }
-
+window.onload = updateHeader;
 // Cadastro
 function cadastro() {
-    const nome_cliente = document.getElementById('nomeCadastro').value;
-    const cpf = document.getElementById('cpfCadastro').value;
-    const email = document.getElementById('emailCadastro').value;
+    const nome_cliente = document.getElementById('nomeCliente').value;
+    const cpf = document.getElementById('cpf').value;
+    const usuario = document.getElementById('usuarioCadastro').value;
     const senha = document.getElementById('senhaCadastro').value;
     const endereco = document.getElementById('enderecoCadastro').value;
-    
-    if (nome_cliente && cpf && email && senha && endereco) {
+
+    if (nome_cliente && cpf && usuario && senha && endereco) {
         fetch('https://pimhtml.onrender.com/api/cadastro', {
             method: 'POST',
             headers: {
@@ -190,7 +204,7 @@ function cadastro() {
             body: JSON.stringify({
                 nome_cliente: nome_cliente,
                 cpf: cpf,
-                email: email,
+                email: usuario,
                 senha: senha,
                 endereco: endereco
             })
@@ -199,15 +213,18 @@ function cadastro() {
         .then(data => {
             if (data.message) {
                 alert(data.message);
-            } else if (data.error) {
+                fecharPopup(); // Fechar o popup após cadastro
+                voltar(); // Voltar para a tela de seleção
+            } else {
                 alert(data.error);
             }
         })
         .catch(error => {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
+            console.error('Erro ao cadastrar o usuário:', error);
+            alert('Erro ao conectar com o servidor. Por favor, tente novamente mais tarde.');
         });
     } else {
         alert('Por favor, preencha todos os campos!');
     }
 }
+
