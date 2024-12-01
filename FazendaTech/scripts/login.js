@@ -100,28 +100,24 @@ document.addEventListener('DOMContentLoaded', atualizarNomeUsuario);
 function updateHeader() {
     const nomeUsuario = localStorage.getItem('nomeUsuario');
     const loginButton = document.getElementById('abrirLogin');
-    const logoutButton = document.getElementById('logoutButton');
-    const usuarioInfo = document.getElementById('usuarioInfo');
+    let usuarioInfo = document.getElementById('usuarioInfo');
 
     if (nomeUsuario) {
-        // Exibe o nome do usuário
+        if (!usuarioInfo) {
+            // Cria um elemento para exibir o nome se não existir
+            usuarioInfo = document.createElement('span');
+            usuarioInfo.id = 'usuarioInfo';
+            usuarioInfo.classList.add('nome-usuario');
+            loginButton.parentNode.insertBefore(usuarioInfo, loginButton.nextSibling);
+        }
         usuarioInfo.textContent = `Bem-vindo, ${nomeUsuario}`;
         usuarioInfo.style.display = 'inline';
-
-        // Exibe o link de logout
-        logoutButton.style.display = 'inline';
-
-        // Esconde o botão de login
-        loginButton.style.display = 'none';
+        loginButton.style.display = 'none'; // Esconde o botão de login
     } else {
-        // Exibe o botão de login
-        loginButton.style.display = 'inline';
-        
-        // Esconde o link de logout
-        logoutButton.style.display = 'none';
-
-        // Esconde o nome do usuário
-        usuarioInfo.style.display = 'none';
+        if (usuarioInfo) {
+            usuarioInfo.style.display = 'none'; // Esconde a informação do usuário
+        }
+        loginButton.style.display = 'inline'; // Mostra o botão de login
     }
 }
 
@@ -160,20 +156,11 @@ function login() {
         .then(data => {
             if (data.message) {
                 alert(data.message);
-                
-                // Atualiza o botão de login para mostrar o nome do usuário
-                const loginButton = document.getElementById('abrirLogin');
-                loginButton.textContent = data.nome; // Muda o texto do botão
-                loginButton.classList.add('usuario-logado'); // Adiciona uma classe opcional
-                loginButton.removeAttribute('id'); // Remove o ID se não precisar mais
 
-                // Esconde o botão de login
-                loginButton.style.display = 'none';
-                
                 // Salva o nome do usuário no localStorage
                 localStorage.setItem('nomeUsuario', data.nome);
 
-                // Atualiza o cabeçalho
+                // Atualiza o cabeçalho imediatamente
                 updateHeader();
             } else {
                 alert('Credenciais inválidas');
@@ -186,6 +173,7 @@ function login() {
         alert('Por favor, preencha todos os campos!');
     }
 }
+
 window.onload = updateHeader;
 // Cadastro
 function cadastro() {
